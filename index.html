@@ -36,6 +36,8 @@ cordova.plugins.barcodeScanner.scan(
           
           is_cancelled = result.cancelled;
           
+          alert(is_cancelled);
+          
           if (is_cancelled == "true") {
               alert("Scanvorgang abgebrochen. Bitte erneut versuchen!")
           }
