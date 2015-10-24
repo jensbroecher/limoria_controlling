@@ -7,8 +7,15 @@
     
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
 <script src="jquery.min.js"></script>
 <script src="cordova.js"></script>
+<script src="js/materialize.js"></script>
 
 <script type="text/javascript">
     
@@ -22,10 +29,15 @@ function scancode() {
     
 cordova.plugins.barcodeScanner.scan(
       function (result) {
-          alert("We got a barcode\n" +
+          // alert("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
+          
+          if (result.cancelled == "true") {
+              alert("Scanvorgang abgebrochen. Bitte erneut versuchen!")
+          }
+          else {
           
           document.getElementById("aniwrap").style.display = "block";
           document.getElementById("scancodebutton").style.display = "none";
@@ -33,6 +45,7 @@ cordova.plugins.barcodeScanner.scan(
           localStorage.setItem("person", result.text);
           
           namefound();
+        }
           
       }, 
       function (error) {
@@ -78,6 +91,7 @@ $(document).ready(function() {
     .gobutton {
     border: 0px solid black;
     padding: 7px;
+    line-height: 200%;
     color: white;
     width: 70%;
     display: block;
@@ -101,7 +115,7 @@ $(document).ready(function() {
 <img style="-webkit-animation-delay: 2s" id="curry" src="logo-limoria.png">
 </div>
     
-<button id="scancodebutton" class="gobutton animated zoomIn" onclick="scancode();" style="-webkit-animation-delay: 1s">Scan QR code</button>
+<button id="scancodebutton" class="gobutton animated zoomIn waves-effect waves-light" onclick="scancode();" style="-webkit-animation-delay: 1s">Scan QR code</button>
     
 <div id="aniwrap">
     
@@ -111,8 +125,8 @@ $(document).ready(function() {
 <br>
 <br>
     
-<button class="gobutton animated zoomIn" onclick="localStorage.setItem('company', 'Mayraa');letsgo();" style="-webkit-animation-delay: 2s">Mayraa</button>
-<button class="gobutton animated zoomIn" onclick="localStorage.setItem('company', 'Curry Masala');letsgo();" style="-webkit-animation-delay: 2s">Curry Masala</button>
+<button class="gobutton animated zoomIn waves-effect waves-light" onclick="localStorage.setItem('company', 'Mayraa');letsgo();" style="-webkit-animation-delay: 2s">Mayraa</button>
+<button class="gobutton animated zoomIn waves-effect waves-light" onclick="localStorage.setItem('company', 'Curry Masala');letsgo();" style="-webkit-animation-delay: 2s">Curry Masala</button>
     
 </div>
 
