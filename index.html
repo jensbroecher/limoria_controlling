@@ -27,7 +27,12 @@ cordova.plugins.barcodeScanner.scan(
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
           
-          document.getElementById('aniwrap').style.display = 'block';
+          document.getElementById("aniwrap").style.display = "block";
+          document.getElementById("scancodebutton").style.display = "none";
+          
+          localStorage.setItem("person", result.text);
+          
+          namefound();
           
       }, 
       function (error) {
@@ -39,7 +44,7 @@ cordova.plugins.barcodeScanner.scan(
     
 function namefound() {
 person = localStorage.getItem("person");
-alert("Willkommen, ""+person+"");
+alert("Willkommen "+person+"");
 }
 
 function letsgo() {
@@ -92,13 +97,13 @@ $(document).ready(function() {
 
 <body id="splashpage">
     
-<button class="gobutton animated zoomIn" onclick="scancode();" style="-webkit-animation-delay: 1s">Scan QR code</button>
-    
-<div id="aniwrap">
-    
 <div id="logo" class="animated fadeIn" style="-webkit-animation-delay: 1s">
 <img style="-webkit-animation-delay: 2s" id="curry" src="logo-limoria.png">
 </div>
+    
+<button id="scancodebutton" class="gobutton animated zoomIn" onclick="scancode();" style="-webkit-animation-delay: 1s">Scan QR code</button>
+    
+<div id="aniwrap">
     
 <br>
 <br>
