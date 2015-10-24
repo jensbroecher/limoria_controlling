@@ -38,10 +38,10 @@ cordova.plugins.barcodeScanner.scan(
           
           alert(is_cancelled);
           
-          if (is_cancelled == "true") {
+          if (is_cancelled == true) {
               alert("Scanvorgang abgebrochen. Bitte erneut versuchen!")
           }
-          else if (is_cancelled == "false") {
+          else if (is_cancelled == false) {
           
           document.getElementById("aniwrap").style.display = "block";
           document.getElementById("scancodebutton").style.display = "none";
